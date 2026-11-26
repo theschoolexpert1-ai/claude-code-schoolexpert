@@ -17,7 +17,7 @@ Leave `TSE_ENV` unset: on Vercel it defaults to **staging** (banner, `noindex`, 
 
 ## 3. Build settings
 Framework Preset: **Other**. No build command. `vercel.json` routes every request to `api/index.py`
-and passes the original path for the WSGI middleware to restore before Flask routing.
+and passes the original path with a named wildcard for the WSGI middleware to restore before Flask routing.
 Redeploy after adding the variables.
 
 ## 4. Create the tables and demo data (once)

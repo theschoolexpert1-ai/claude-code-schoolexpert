@@ -1,7 +1,20 @@
 import io
+import json
 import unittest
+from pathlib import Path
 
 from vercel_path import VercelPathMiddleware
+
+
+class VercelRewriteConfigTests(unittest.TestCase):
+    def test_rewrite_passes_the_original_path_to_middleware(self):
+        config_path = Path(__file__).resolve().parents[1] / 'vercel.json'
+        config = json.loads(config_path.read_text(encoding='utf-8'))
+
+        self.assertEqual(config['rewrites'], [{
+            'source': '/:path*',
+            'destination': '/api/index?__tse_path=/:path*',
+        }])
 
 
 class VercelPathMiddlewareTests(unittest.TestCase):
