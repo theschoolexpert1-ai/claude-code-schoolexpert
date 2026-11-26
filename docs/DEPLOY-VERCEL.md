@@ -16,7 +16,8 @@ This adds `DATABASE_URL`, `DATABASE_URL_UNPOOLED` etc. The app automatically use
 Leave `TSE_ENV` unset: on Vercel it defaults to **staging** (banner, `noindex`, simulated payments, files stored in the database).
 
 ## 3. Build settings
-Framework Preset: **Other**. No build command. `vercel.json` routes every request to `api/index.py`.
+Framework Preset: **Other**. No build command. `vercel.json` routes every request to `api/index.py`
+and passes the original path for the WSGI middleware to restore before Flask routing.
 Redeploy after adding the variables.
 
 ## 4. Create the tables and demo data (once)
